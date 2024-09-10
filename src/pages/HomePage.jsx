@@ -1,4 +1,3 @@
-import React from 'react'
 import { ListaLuces } from '../components/ListaLuces'
 import { DHT11 } from '../components/DHT11'
 

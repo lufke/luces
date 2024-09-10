@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { tasmotaContext } from '../contexts/tasmotaContext'
 
 export const DHT11 = () => {
