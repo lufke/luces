@@ -4,7 +4,7 @@ import { HomePage } from './pages/HomePage';
 
 const App = () => {
   return (
-    <MQTTProvider host={'test.mosquitto.org'} port={8080}>
+    <MQTTProvider host={'192.168.1.48'} port={9001}>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />} />

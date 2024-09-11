@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { tasmotaContext } from '../contexts/tasmotaContext'
+import { Button, FormControlLabel, FormGroup, Stack, Switch } from '@mui/material'
 
 export const ListaLuces = () => {
 
@@ -7,23 +8,59 @@ export const ListaLuces = () => {
     console.log(tasmotasList)
     const visibles = tasmotasList.filter(item => item.ip)
 
-    const ListItem = ({ item }) => {
-
+    const ListSwitchItem = ({ item }) => {
+        const toggleLight = () => clienteMQTT.publish(`cmnd/${item.equipo}/POWER`, 'TOGGLE')
         return (
-            <li>
-                {/* {JSON.stringify(item)} */}
-                {item.nombre}
-                <button onClick={() => clienteMQTT.publish(`cmnd/${item.equipo}/POWER`, 'TOGGLE')} >{item.estado}</button>
-            </li>
+            <FormControlLabel
+                control={
+                    <Switch
+                        checked={item.estado === 'ON' ? true : false}
+                        onChange={toggleLight}
+                        color='success'
+                        
+                        // disabled
+                    />
+                }
+                label={item.nombre}
+                // labelPlacement='top'
+            />
         )
     }
+
+
+    const ListItem = ({ item }) => {
+
+        const toggleLight = () => clienteMQTT.publish(`cmnd/${item.equipo}/POWER`, 'TOGGLE')
+
+        return (
+            <Button
+                variant='contained'
+                onClick={() => toggleLight(item)}
+            >
+                {item.nombre} - {item.estado}
+            </Button>
+        )
+    }
+
     return (
-        <ul>
+        // <Stack
+        //     spacing={2}
+        //     direction={'column'}
+        // >
+        //     {visibles.map(item => {
+        //         return (
+        //             // <ListItem key={item.ip} item={item} />
+        //             <ListSwitchItem key={item.ip} item={item} />
+        //         )
+        //     })}
+        // </Stack>
+
+        <FormGroup>
             {visibles.map(item => {
                 return (
-                    <ListItem key={item.ip} item={item} />
+                    <ListSwitchItem key={item.ip} item={item} />
                 )
             })}
-        </ul>
+        </FormGroup>
     )
 }
