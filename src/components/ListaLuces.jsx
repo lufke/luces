@@ -4,7 +4,7 @@ import { Button, FormControlLabel, FormGroup, Stack, Switch } from '@mui/materia
 
 export const ListaLuces = () => {
 
-    const { clienteMQTT, tasmotasList = [], knilStats = {} } = useContext(tasmotaContext)
+    const { clienteMQTT, tasmotasList = [] } = useContext(tasmotaContext)
     console.log(tasmotasList)
     const visibles = tasmotasList.filter(item => item.ip)
 
@@ -14,15 +14,16 @@ export const ListaLuces = () => {
             <FormControlLabel
                 control={
                     <Switch
-                        checked={item.estado === 'ON' ? true : false}
+                        checked={item.estado === 'ON'}
                         onChange={toggleLight}
-                        color='success'
+                        // color='success'
+                        // size='medium'
                         
-                        // disabled
+                    // disabled
                     />
                 }
                 label={item.nombre}
-                // labelPlacement='top'
+            // labelPlacement='top'
             />
         )
     }
