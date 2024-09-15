@@ -5,14 +5,14 @@ import { useContext } from 'react'
 
 export const HomePage = () => {
 
-    const { clienteMQTT } = useContext(tasmotaContext)
+    const { clienteMQTT, knilStats } = useContext(tasmotaContext)
     console.log(clienteMQTT)
     return (
         <div>
             {!clienteMQTT?.connected
                 ? <h1>OFFLINE</h1>
                 : <>
-                    <DHT11 />
+                    {knilStats && <DHT11 />}
                     <ListaLuces />
                 </>
             }
