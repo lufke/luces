@@ -3,7 +3,7 @@ import { tasmotaContext } from '../contexts/tasmotaContext'
 
 export const DHT11 = () => {
     const { knilStats } = useContext(tasmotaContext)
-    const dateTime = knilStats.dt.split(', ')
+    const dateTime = knilStats?.dt?.split(', ')
     return (
         <>
             <h3>🌡️ {knilStats.temp}° - 💧 {knilStats.hum}%</h3>
