@@ -2,6 +2,7 @@ import { ListaLuces } from '../components/ListaLuces'
 import { DHT11 } from '../components/DHT11'
 import { tasmotaContext } from '../contexts/tasmotaContext'
 import { useContext } from 'react'
+import Lora from '../components/Lora' 
 
 export const HomePage = () => {
 
@@ -13,6 +14,7 @@ export const HomePage = () => {
                 : <>
                     {knilStats.temp && <DHT11 />}
                     <ListaLuces />
+                    <Lora />
                 </>
             }
         </div>
