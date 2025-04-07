@@ -17,7 +17,7 @@ export const ListaLuces = () => {
                         onChange={toggleLight}
                     />
                 }
-                label={`${item.nombre} - ${item.ip}`}
+                label={item.nombre}
             />
         )
     }
@@ -40,24 +40,24 @@ export const ListaLuces = () => {
     }
 
     return (
-         <Stack
-             spacing={2}
-             direction={'column'}
-         >
-             {visibles.map(item => {
-                 return (
-                      <ListItem key={item.ip} item={item} />
-                     //<ListSwitchItem key={item.ip} item={item} />
-                 )
-             })}
-         </Stack>
+//         <Stack
+//             spacing={2}
+//             direction={'column'}
+//         >
+//             {visibles.map(item => {
+//                 return (
+//                      <ListItem key={item.ip} item={item} />
+//                     //<ListSwitchItem key={item.ip} item={item} />
+//                 )
+//             })}
+//         </Stack>
 
-//        <FormGroup>
-//            {visibles.map(item => {
-//                return (
-//                    <ListSwitchItem key={item.ip} item={item} />
-//                )
-//            })}
-//        </FormGroup>
+        <FormGroup>
+            {visibles.map(item => {
+                return (
+                    <ListSwitchItem key={item.ip} item={item} />
+                )
+            })}
+        </FormGroup>
     )
 }

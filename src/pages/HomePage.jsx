@@ -6,17 +6,19 @@ import Lora from '../components/Lora'
 
 export const HomePage = () => {
 
-    const { clienteMQTT, knilStats } = useContext(tasmotaContext)
-    return (
-        <div>
-            {!clienteMQTT?.connected
-                ? <h1>OFFLINE</h1>
-                : <>
-                    {knilStats.temp && <DHT11 />}
-                    <ListaLuces />
-                    <Lora />
-                </>
-            }
-        </div>
-    )
+	const { clienteMQTT, knilStats } = useContext(tasmotaContext)
+	return (
+		<div>
+			<div style={{display:'flex', justifyContent:'space-between', gap: '20px'}}>
+				{!clienteMQTT?.connected
+					? <h1>OFFLINE</h1>
+					: <>
+						{knilStats.temp && <DHT11 />}
+						<Lora />
+					</>
+				}
+			</div>
+			<ListaLuces/>
+		</div>
+	)
 }

@@ -34,7 +34,7 @@ const json = await response.json();
 
 return (
     <div>
-      <h3>DHT11</h3>
+      <h3>LoRa</h3>
 
       {loading && <p>Cargando datos...</p>}
       {error && <p>{error}</p>}
@@ -43,7 +43,7 @@ return (
         <div>
           <p>🌡️ {data.temperatura}° - 💧 {data.humedad} %</p>
 
-<p>🗓️ {new Date(data.fecha_recepcion).toLocaleDateString('es-CL')}</p>
+<p>📅 {new Date(data.fecha_recepcion).toLocaleDateString('es-CL')}</p>
 <p>⌚ {new Date(data.fecha_recepcion).toLocaleTimeString('es-CL')} </p>
 <p>📡 {data.equipo}</p>
 </div>
